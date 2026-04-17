@@ -39,12 +39,6 @@ b_ub = [120, 80, 150]
 # --- LIMITES DE LAS VARIABLES (x >= 0) ---
 bounds = [(0, None), (0, None)]
 
-# --- RESOLVER ---
-resultado = linprog(c, A_ub=A_ub, b_ub=b_ub, bounds=bounds, method="highs")
-
-# --- RESULTADOS ---
-x1_opt, x2_opt = resultado.x
-ganancia_max = -resultado.fun
 
 print("=" * 48)
 print("  MEZCLA DE FERTILIZANTES - SciPy")
@@ -54,22 +48,13 @@ print()
 print("VARIABLES DE DECISION:")
 print("x1 = toneladas de fertilizante F1")
 print("x2 = toneladas de fertilizante F2")
+print("FUNCION OBJETIVO:")
+print("Max Z = 180x1 + 220x2")
 print()
 print("CLASIFICACION DEL MODELO:")
 print("Tipo: lineal")
 print("Variables: continuas")
 print()
-print(f"Fertilizante F1: {x1_opt:.4f} toneladas")
-print(f"Fertilizante F2: {x2_opt:.4f} toneladas")
-print()
-print(f"Ganancia maxima: ${ganancia_max:.4f}")
-print("=" * 48)
-
-# --- VERIFICACION ---
-print("\nVERIFICACION:")
-print(f"Compuesto A usado: {3*x1_opt + 4*x2_opt:.4f} kg (maximo 120 kg)")
-print(f"Compuesto B usado: {2*x1_opt + x2_opt:.4f} kg (maximo 80 kg)")
-print(f"Compuesto C usado: {5*x1_opt + 3*x2_opt:.4f} kg (maximo 150 kg)")
 
 """## 2. Produccion semanal de una fabrica"""
 
